@@ -70,12 +70,12 @@ Quick Start with Docker and Docker Compose
 
 - Build PSW and SDK from source. See this [README](docker/build/README.md) for details.
 ```
-$ cd docker/build && ./build_compose_run.sh
+ cd docker/build && ./build_compose_run.sh
 ```
 
 - Use prebuilt PSW and SDK downloaded from 01.org. See this [README](linux/installer/docker/README.md) for details.
 ```
-$ cd linux/installer/docker && ./build_compose_run.sh
+ cd linux/installer/docker && ./build_compose_run.sh
 ```
 
 Build and Install the Intel(R) SGX Driver
@@ -102,78 +102,78 @@ Build the Intel(R) SGX SDK and Intel(R) SGX PSW Package
 - Use the following command(s) to install the required tools to build the Intel(R) SGX SDK:
   * On Ubuntu 18.04 and Debian 10:
   ```
-    $ sudo apt-get install build-essential ocaml ocamlbuild automake autoconf libtool wget python3 libssl-dev git cmake perl
-    $ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+     sudo apt-get install build-essential ocaml ocamlbuild automake autoconf libtool wget python3 libssl-dev git cmake perl
+     sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
   ```
   * On Ubuntu 20.04 and Ubuntu 22.04:
   ```
-    $ sudo apt-get install build-essential ocaml ocamlbuild automake autoconf libtool wget python-is-python3 libssl-dev git cmake perl
+     sudo apt-get install build-essential ocaml ocamlbuild automake autoconf libtool wget python-is-python3 libssl-dev git cmake perl
   ```
   * On Red Hat Enterprise Linux 8.6:
   ```
-    $ sudo yum groupinstall 'Development Tools'
-    $ sudo yum install ocaml ocaml-ocamlbuild wget python3 openssl-devel git cmake perl
-    $ sudo alternatives --set python /usr/bin/python3
+     sudo yum groupinstall 'Development Tools'
+     sudo yum install ocaml ocaml-ocamlbuild wget python3 openssl-devel git cmake perl
+     sudo alternatives --set python /usr/bin/python3
   ```
   * On CentOS Stream 8 and CentOS 8.3:
   ```
-    $ sudo dnf group install 'Development Tools'
-    $ sudo dnf --enablerepo=powertools install ocaml ocaml-ocamlbuild redhat-rpm-config openssl-devel wget rpm-build git cmake perl python3
-    $ sudo alternatives --set python /usr/bin/python3
+     sudo dnf group install 'Development Tools'
+     sudo dnf --enablerepo=powertools install ocaml ocaml-ocamlbuild redhat-rpm-config openssl-devel wget rpm-build git cmake perl python3
+     sudo alternatives --set python /usr/bin/python3
   ```
   * On Anolis 8.6:
   ```
-    $ sudo dnf group install 'Development Tools'
-    $ sudo dnf --enablerepo=PowerTools install ocaml ocaml-ocamlbuild redhat-rpm-config openssl-devel wget rpm-build git cmake perl python3
-    $ sudo alternatives --set python /usr/bin/python3
+     sudo dnf group install 'Development Tools'
+     sudo dnf --enablerepo=PowerTools install ocaml ocaml-ocamlbuild redhat-rpm-config openssl-devel wget rpm-build git cmake perl python3
+     sudo alternatives --set python /usr/bin/python3
   ```
   * On SUSE Linux Enterprise Server 15.4:
   ```
-    $ sudo zypper install --type pattern devel_basis
-    $ sudo zypper install ocaml ocaml-ocamlbuild automake autoconf libtool wget python3 libopenssl-devel rpm-build git cmake perl
-    $ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+     sudo zypper install --type pattern devel_basis
+     sudo zypper install ocaml ocaml-ocamlbuild automake autoconf libtool wget python3 libopenssl-devel rpm-build git cmake perl
+     sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
   ```
    **Note**:  To build Intel(R) SGX SDK, gcc version is required to be 7.3 or above and glibc version is required to be 2.27 or above.
 - Use the following command to install additional required tools and latest Intel(R) SGX SDK Installer to build the Intel(R) SGX PSW:
   1)  To install the additional required tools:
       * On Debian 10:
       ```
-        $ sudo apt-get install libssl-dev libcurl4-openssl-dev protobuf-compiler libprotobuf-dev debhelper cmake reprepro unzip lsb-release libsystemd0
+         sudo apt-get install libssl-dev libcurl4-openssl-dev protobuf-compiler libprotobuf-dev debhelper cmake reprepro unzip lsb-release libsystemd0
       ```
       * On Ubuntu 20.04 and Ubuntu 22.04:
       ```
-        $ sudo apt-get install libssl-dev libcurl4-openssl-dev protobuf-compiler libprotobuf-dev debhelper cmake reprepro unzip pkgconf libboost-dev libboost-system-dev libboost-thread-dev lsb-release libsystemd0
+         sudo apt-get install libssl-dev libcurl4-openssl-dev protobuf-compiler libprotobuf-dev debhelper cmake reprepro unzip pkgconf libboost-dev libboost-system-dev libboost-thread-dev lsb-release libsystemd0
       ```
       * On Red Hat Enterprise Linux 8.6:
       ```
-        $ sudo yum install openssl-devel libcurl-devel protobuf-devel cmake rpm-build createrepo yum-utils pkgconf boost-devel protobuf-lite-devel systemd-libs
+         sudo yum install openssl-devel libcurl-devel protobuf-devel cmake rpm-build createrepo yum-utils pkgconf boost-devel protobuf-lite-devel systemd-libs
       ```
       * On CentOS Stream 8 and CentOS 8.3:
       ```
-        $ sudo dnf --enablerepo=powertools install openssl-devel libcurl-devel protobuf-devel cmake rpm-build createrepo yum-utils pkgconf boost-devel protobuf-lite-devel systemd-libs
+         sudo dnf --enablerepo=powertools install openssl-devel libcurl-devel protobuf-devel cmake rpm-build createrepo yum-utils pkgconf boost-devel protobuf-lite-devel systemd-libs
       ```
       * On Anolis 8.6:
       ```
-        $ sudo dnf --enablerepo=PowerTools install openssl-devel libcurl-devel protobuf-devel cmake rpm-build createrepo yum-utils pkgconf boost-devel protobuf-lite-devel systemd-libs
+         sudo dnf --enablerepo=PowerTools install openssl-devel libcurl-devel protobuf-devel cmake rpm-build createrepo yum-utils pkgconf boost-devel protobuf-lite-devel systemd-libs
       ```
       * On SUSE Linux Enterprise Server 15.4:
       ```
-        $ sudo zypper install libopenssl-devel libcurl-devel protobuf-devel cmake rpm-build createrepo libsystemd0
+         sudo zypper install libopenssl-devel libcurl-devel protobuf-devel cmake rpm-build createrepo libsystemd0
       ```
       2) To install latest Intel(R) SGX SDK Installer
   Ensure that you have downloaded latest Intel(R) SGX SDK Installer from the [Intel(R) SGX SDK](https://software.intel.com/en-us/sgx-sdk/download) and followed the Installation Guide in the same page to install latest Intel(R) SGX SDK Installer.
 
 - Download the source code and prepare the submodules and prebuilt binaries:
 ```
-   $ git clone https://github.com/intel/linux-sgx.git
-   $ cd linux-sgx && make preparation
+    git clone https://github.com/intel/linux-sgx.git
+    cd linux-sgx && make preparation
 ```
   The above ``make preparation`` would trigger the script ``download_prebuilt.sh`` to download the prebuilt binaries. You may need to set an https proxy for the `wget` tool used by the script (such as ``export https_proxy=http://test-proxy:test-port``)
 
 - Copy the mitigation tools corresponding to current OS distribution from external/toolset/{current_distr} to /usr/local/bin and make sure they have execute permission:
   ```
-    $ sudo cp external/toolset/{current_distr}/* /usr/local/bin
-    $ which ar as ld objcopy objdump ranlib
+     sudo cp external/toolset/{current_distr}/* /usr/local/bin
+     which ar as ld objcopy objdump ranlib
   ```
     **Note**: The above action is a must even if you copied the previous mitigation tools to /usr/local/bin before. It ensures the updated mitigation tools are used in the later build.
 
@@ -181,7 +181,7 @@ Build the Intel(R) SGX SDK and Intel(R) SGX PSW Package
 ### Build the Intel(R) SGX SDK and Intel(R) SGX SDK Installer
 - To build Intel(R) SGX SDK with default configuration, enter the following command:
 ```
-  $ make sdk
+   make sdk
 ```
 You can find the three flavors of tools and libraries generated in the `build` directory.
 
@@ -193,64 +193,64 @@ You can find the three flavors of tools and libraries generated in the `build` d
   The default build uses `USE_OPT_LIBS=1`, if you directly type `$ make sdk` as above.
   You can switch to the other build combinations instead by entering the following command:
 ```
-  $ make sdk USE_OPT_LIBS=0
+   make sdk USE_OPT_LIBS=0
 ```
 or
 ```
-  $ make sdk_no_mitigation USE_OPT_LIBS=2
+   make sdk_no_mitigation USE_OPT_LIBS=2
 ```
 or
 ```
-  $ make sdk_no_mitigation USE_OPT_LIBS=3
+   make sdk_no_mitigation USE_OPT_LIBS=3
 ```
   **Note**: Building the Intel(R) SGX PSW with open sourced SGXSSL/string/math libraries is not supported.
   **Note**: Building mitigation SDK with `USE_OPT_LIBS=2` or `USE_OPT_LIBS=3` is not allowed.
 
 - To build Intel(R) SGX SDK with debug information, enter the following command:
 ```
-  $ make sdk DEBUG=1
+   make sdk DEBUG=1
 ```
 
 - To clean the files generated by previous `make sdk` command, enter the following command:
 ```
-  $ make clean
+   make clean
 ```
 - To build the Intel(R) SGX SDK installer, enter the following command:
 ```
-  $ make sdk_install_pkg
+   make sdk_install_pkg
 ```
 You can find the generated Intel(R) SGX SDK installer ``sgx_linux_x64_sdk_${version}.bin`` located under `linux/installer/bin/`, where `${version}` refers to the version number.
 
 **Note**: The above command builds the Intel(R) SGX SDK with default configuration firstly and then generates the target SDK Installer. To build the Intel(R) SGX SDK Installer with debug information kept in the tools and libraries, enter the following command:
 ```
-  $ make sdk_install_pkg DEBUG=1
+   make sdk_install_pkg DEBUG=1
 ```
 
 ### Build the Intel(R) SGX PSW and Intel(R) SGX PSW Installer
 - To build Intel(R) SGX PSW with default configuration, enter the following command:
 ```
-  $ make psw
+   make psw
 ```
 You can find the tools and libraries generated in the `build/linux` directory.
   **Note**: You can also go to the `psw` folder and use the `make` command to build the Intel(R) SGX PSW component only.
 - To build Intel(R) SGX PSW with debug information, enter the following command:
 ```
-  $ make psw DEBUG=1
+   make psw DEBUG=1
 ```
 - To clean the files generated by previous `make psw` command, enter the following command:
 ```
-  $ make clean
+   make clean
 ```
   The build above uses prebuilt Intel(R) Architecture Enclaves(LE/PvE/QE/PCE) - the files ``psw/ae/data/prebuilt/libsgx_*.signed.so``, which have been signed by Intel in advance.
 - To build those enclaves by yourself (without a signature), first you need to install latest Intel(R) SGX SDK from the [Intel(R) SGX SDK](https://software.intel.com/en-us/sgx-sdk/download) and then build PSW with the default configuration. After that, you can build each Architecture Enclave by using the `make` command from the corresponding folder:
 ```
-  $ cd psw/ae/le
-  $ make
+   cd psw/ae/le
+   make
 ```
 - To build the Intel(R) SGX PSW installer, enter the following command:
   * On Ubuntu 18.04, Ubuntu 20.04, Ubuntu 22.04 and Debian 10:
    ```
-  $ make deb_psw_pkg
+   make deb_psw_pkg
   ```
   You can find the generated Intel(R) SGX PSW installers located under `linux/installer/deb/libsgx-urts`, `linux/installer/deb/libsgx-enclave-common`, `linux/installer/deb/libsgx-uae-service`, `linux/installer/deb/libsgx-epid`, `linux/installer/deb/libsgx-launch`, `linux/installer/deb/libsgx-quote-ex` and `linux/installer/deb/sgx-aesm-service` respectively.
 
@@ -259,22 +259,22 @@ You can find the tools and libraries generated in the `build/linux` directory.
   **Note**: On Debian 10, the default PATH environment may not include /sbin. In this case, before trigger the build, please add /sbin to PATH environment by `export PATH=$PATH:/sbin`.
   **Note**: The above command builds the Intel(R) SGX PSW with default configuration firstly and then generates the target PSW Installer. To build the Intel(R) SGX PSW Installer without optimization and with full debug information kept in the tools and libraries, enter the following command:
   ```
-  $ make deb_psw_pkg DEBUG=1
+   make deb_psw_pkg DEBUG=1
   ```
   * On Red Hat Enterprise Linux 8.6, CentOS Stream 8, CentOS 8.3, Anolis OS 8.6 and SUSE Linux Enterprise Server 15.4:
   ```
-  $ make rpm_psw_pkg
+   make rpm_psw_pkg
   ```
   You can find the generated Intel(R) SGX PSW installers located under `linux/installer/rpm/libsgx-urts`, `linux/installer/rpm/libsgx-enclave-common`, `linux/installer/rpm/libsgx-uae-service`, `linux/installer/rpm/libsgx-epid`, `linux/installer/rpm/libsgx-launch`, `linux/installer/rpm/libsgx-quote-ex` and `linux/installer/rpm/sgx-aesm-service` respectively.
 
   **Note**: The above command builds the Intel(R) SGX PSW with default configuration firstly and then generates the target PSW Installer. To build the Intel(R) SGX PSW Installer with debug information kept in the tools and libraries, enter the following command:
   ```
-  $ make rpm_psw_pkg DEBUG=1
+   make rpm_psw_pkg DEBUG=1
   ```
 
 - To build local Debian package repository, enter the following command:
   ```
-  $ make deb_local_repo
+   make deb_local_repo
   ```
   You can find the local package repository located under `linux/installer/deb/sgx_debian_local_repo`.
 
@@ -299,12 +299,12 @@ You can find the tools and libraries generated in the `build/linux` directory.
   ```
   After that, you need to update the apt:
   ```
-  $ sudo apt update
+   sudo apt update
   ```
 
 - To build local RPM package repository, enter the following command:
   ```
-  $ make rpm_local_repo
+   make rpm_local_repo
   ```
   You can find the local package repository located under `linux/installer/rpm/sgx_rpm_local_repo`.
 
@@ -313,20 +313,20 @@ You can find the tools and libraries generated in the `build/linux` directory.
 - To add the local RPM package repository to the system repository configuration, you can use the following command. You need to replace PATH_TO_LOCAL_REPO with the proper path on your system:
   * On Red Hat Enterprise Linux 8.6, CentOS Stream 8, CentOS 8.3, Anolis OS 8.6:
   ```
-  $ sudo yum-config-manager --add-repo file://PATH_TO_LOCAL_REPO
+   sudo yum-config-manager --add-repo file://PATH_TO_LOCAL_REPO
   ```
   * On SUSE Linux Enterprise Server 15.4, you need to replace LOCAL_REPO_ALIAS with proper alias name for the local repo:
   ```
-  $ sudo zypper addrepo PATH_TO_LOCAL_REPO LOCAL_REPO_ALIAS
+   sudo zypper addrepo PATH_TO_LOCAL_REPO LOCAL_REPO_ALIAS
   ```
 - To ignore the gpgcheck when you install the package, enter the following command:
   * On Red Hat Enterprise Linux 8.6, CentOS Stream 8, CentOS 8.3, Anolis OS 8.6:
   ```
-  $ sudo yum --nogpgcheck install <package>
+   sudo yum --nogpgcheck install <package>
   ```
   * On SUSE Linux Enterprise Server 15.5:
   ```
-  $ sudo zypper --no-gpg-checks install <package>
+   sudo zypper --no-gpg-checks install <package>
   ```
 
 Install the Intel(R) SGX SDK
@@ -347,50 +347,50 @@ Install the Intel(R) SGX SDK
 - Use the following command to install the required tool to use Intel(R) SGX SDK:
   * On Ubuntu 18.04 and Debian 10:
   ```
-    $ sudo apt-get install build-essential python3
-    $ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+     sudo apt-get install build-essential python3
+     sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
   ```
    * On Ubuntu 20.04 and Ubuntu 22.04:
   ```
-    $ sudo apt-get install build-essential python-is-python3
+     sudo apt-get install build-essential python-is-python3
   ```
   * On Red Hat Enterprise Linux 8.6, CentOS Stream 8, CentOS 8.3 and Anolis OS 8.6:
   ```
-     $ sudo yum groupinstall 'Development Tools'
-     $ sudo yum install python3
-     $ sudo alternatives --set python /usr/bin/python3
+      sudo yum groupinstall 'Development Tools'
+      sudo yum install python3
+      sudo alternatives --set python /usr/bin/python3
   ```
   * On SUSE Linux Enterprise Server 15.4:
   ```
-     $ sudo zypper install --type pattern devel_basis
-     $ sudo zypper install python3
-     $ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+      sudo zypper install --type pattern devel_basis
+      sudo zypper install python3
+      sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
   ```
 
 ### Install the Intel(R) SGX SDK
 To install the Intel(R) SGX SDK, invoke the installer, as follows:
 ```
-$ cd linux/installer/bin
-$ ./sgx_linux_x64_sdk_${version}.bin
+ cd linux/installer/bin
+ ./sgx_linux_x64_sdk_${version}.bin
 ```
 The above command requires you to specify the installation path. You can use the following command
 to use the non-interactive installation mode:
 ```
-$ cd linux/installer/bin
-$ ./sgx_linux_x64_sdk_${version}.bin --prefix {SDK_INSTALL_PATH_PREFIX}
+ cd linux/installer/bin
+ ./sgx_linux_x64_sdk_${version}.bin --prefix {SDK_INSTALL_PATH_PREFIX}
 ```
 NOTE: You need to set up the needed environment variables before compiling your code. To do so, run:
 ```
-  $ source ${sgx-sdk-install-path}/environment
+   source ${sgx-sdk-install-path}/environment
 ```
 
 ### Test the Intel(R) SGX SDK Package with the Code Samples
 - Compile and run each code sample in Simulation mode to make sure the package works well:
 ```
-  $ cd ${sgx-sdk-install-path}/SampleCode/LocalAttestation
-  $ make SGX_MODE=SIM
-  $ cd bin
-  $ ./app
+   cd ${sgx-sdk-install-path}/SampleCode/LocalAttestation
+   make SGX_MODE=SIM
+   cd bin
+   ./app
 ```
    Use similar commands for other sample codes.
 
@@ -401,18 +401,18 @@ See the earlier topic, *Build and Install the Intel(R) SGX Driver*, for informat
 See the later topic, *Install Intel(R) SGX PSW*, for information on how to install the PSW package.
 - Compile and run each code sample in Hardware mode, Debug build, as follows:
 ```
-  $ cd ${sgx-sdk-install-path}/SampleCode/LocalAttestation
-  $ make
-  $ cd bin
-  $ ./app
+   cd ${sgx-sdk-install-path}/SampleCode/LocalAttestation
+   make
+   cd bin
+   ./app
 ```
    Use similar commands for other code samples.
    **Note:** On Ubuntu 22.04 or any distro with systemd v248 or later, /dev/sgx_enclave is only accessible by users in the group "sgx". The enclave app should be run with a uid in the sgx group.
    ```
    # check systemd version:
-   $ systemctl --version
+    systemctl --version
    # add sgx group to user if it's 248 or above:
-   $ sudo usermod -a -G sgx <user name>
+    sudo usermod -a -G sgx <user name>
    ```
 
 
@@ -438,23 +438,23 @@ Install the Intel(R) SGX PSW
 - Install the library using the following command:
   * On Ubuntu 18.04, Ubuntu 20.04, Ubuntu 22.04 and Debian 10:
   ```
-    $ sudo apt-get install libssl-dev libcurl4-openssl-dev libprotobuf-dev
+     sudo apt-get install libssl-dev libcurl4-openssl-dev libprotobuf-dev
   ```
   * On Red Hat Enterprise Linux 8.6:
   ```
-    $ sudo yum install openssl-devel libcurl-devel protobuf-devel
+     sudo yum install openssl-devel libcurl-devel protobuf-devel
   ```
   * On CentOS Stream 8 and CentOS 8.3:
   ```
-    $ sudo dnf --enablerepo=powertools install libcurl-devel protobuf-devel
+     sudo dnf --enablerepo=powertools install libcurl-devel protobuf-devel
   ```
   * On Anolis OS 8.6:
   ```
-    $ sudo dnf --enablerepo=PowerTools install libcurl-devel protobuf-devel
+     sudo dnf --enablerepo=PowerTools install libcurl-devel protobuf-devel
   ```
   * On SUSE Linux Enterprise Server 15.4:
   ```
-    $ sudo zypper install libopenssl-devel libcurl-devel protobuf-devel
+     sudo zypper install libopenssl-devel libcurl-devel protobuf-devel
   ```
 
 ### Install the Intel(R) SGX PSW
