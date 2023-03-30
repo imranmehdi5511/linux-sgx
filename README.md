@@ -227,6 +227,82 @@ You can find the generated Intel(R) SGX SDK installer ``sgx_linux_x64_sdk_${vers
 ```
 
 ### Build the Intel(R) SGX PSW and Intel(R) SGX PSW Installer
+- First install intel sdk to opt/intel directory otherwise the commands below will not work:
+Install the Intel(R) SGX SDK
+------------------------
+### Prerequisites
+- Ensure that you have one of the following operating systems:
+  * Ubuntu\* 18.04 LTS Desktop 64bits
+  * Ubuntu\* 18.04 LTS Server 64bits
+  * Ubuntu\* 20.04 LTS Desktop 64bits
+  * Ubuntu\* 20.04 LTS Server 64bits
+  * Ubuntu\* 22.04 LTS Server 64bits
+  * Red Hat Enterprise Linux Server release 8.6 64bits
+  * CentOS Stream 8 64bits
+  * CentOS 8.3 64bits
+  * SUSE Linux Enterprise Server 15.4 64bits
+  * Anolis OS 8.6 64bits
+  * Debian 10 64bits
+- Use the following command to install the required tool to use Intel(R) SGX SDK:
+  * On Ubuntu 18.04 and Debian 10:
+  ```
+     sudo apt-get install build-essential python3
+     sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+  ```
+   * On Ubuntu 20.04 and Ubuntu 22.04:
+  ```
+     sudo apt-get install build-essential python-is-python3
+  ```
+  * On Red Hat Enterprise Linux 8.6, CentOS Stream 8, CentOS 8.3 and Anolis OS 8.6:
+  ```
+      sudo yum groupinstall 'Development Tools'
+      sudo yum install python3
+      sudo alternatives --set python /usr/bin/python3
+  ```
+  * On SUSE Linux Enterprise Server 15.4:
+  ```
+      sudo zypper install --type pattern devel_basis
+      sudo zypper install python3
+      sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+  ```
+
+### Install the Intel(R) SGX SDK
+To install the Intel(R) SGX SDK, invoke the installer, as follows:
+```
+ cd linux/installer/bin
+ ./sgx_linux_x64_sdk_${version}.bin
+```
+The above command requires you to specify the installation path. You can use the following command
+to use the non-interactive installation mode:
+```
+ cd linux/installer/bin
+ sudo mkdir /opt/intel
+ sudo ./sgx_linux_x64_sdk_${version}.bin --prefix {SDK_INSTALL_PATH_PREFIX}
+```
+NOTE: When promted in which path you want to install the intel sgx sdk, enter the following path:
+```
+   /opt/intel
+```
+NOTE: You need to set up the needed environment variables before compiling your code. To do so, run:
+```
+   source ${sgx-sdk-install-path}/environment
+```
+NOTE: The following source path is used as intel sgx psw installation looks for intel sgx sdk in the 
+following directory. Use the following source path:
+```
+   source /opt/intel/sgxsdk/environment
+```
+### Test the Intel(R) SGX SDK Package with the Code Samples
+- Compile and run each code sample in Simulation mode to make sure the package works well:
+```
+   cd ${sgx-sdk-install-path}/SampleCode/LocalAttestation
+   make SGX_MODE=SIM
+   cd bin
+   ./app
+```
+   Use similar commands for other sample codes.
+
+
 - To build Intel(R) SGX PSW with default configuration, enter the following command:
 ```
    make psw
