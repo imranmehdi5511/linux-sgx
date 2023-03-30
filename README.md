@@ -65,8 +65,16 @@ Documentation
 - [Intel(R) SGX for Linux\* OS](https://01.org/intel-softwareguard-extensions) project home page on [01.org](https://01.org)
 - [Intel(R) SGX Programming Reference](https://software.intel.com/sites/default/files/managed/7c/f1/332831-sdm-vol-3d.pdf)
 
+Quick Note
+-----------
+Run all the commands as root to avoid erors. To do so enter the following command and enter your root password if prompted. Normalling the root password is the password of your linux account.
+```
+   sudo su
+```
+
 Quick Start with Docker and Docker Compose
 -----------------------------------------
+
 
 - Build PSW and SDK from source. See this [README](docker/build/README.md) for details.
 ```
